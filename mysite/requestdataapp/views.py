@@ -32,3 +32,6 @@ def handle_file_upload(request: HttpRequest) -> HttpResponse:
 
     return render(request, 'requestdataapp/file-upload.html')
 
+
+def error_req_count(request: HttpRequest) -> HttpResponse:
+    return render(request, 'requestdataapp/error-request-count.html')

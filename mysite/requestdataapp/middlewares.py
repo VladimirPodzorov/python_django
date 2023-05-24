@@ -2,6 +2,8 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpRequest
 import time
 
+from requestdataapp.views import error_req_count
+
 
 def set_useragent_on_request_middleware(get_response):
     print("initial call")
@@ -40,19 +42,25 @@ class ThrottlingMiddleware:
 
     def __init__(self, get_response):
         self.get_response = get_response
-        self.ip_time = {}
+        self.count = 0
+        self.first_time = 0
+        self.ip_log = {}
 
     def __call__(self, request: HttpRequest):
-        value = time.time()
+        self.count += 1
         ip = request.META.get('REMOTE_ADDR')
-        if ip not in self.ip_time.keys():
-            self.ip_time[ip] = [value]
+        if ip not in self.ip_log.keys():
+            self.first_time = time.time()
+            self.ip_log[ip] = {'first_time': self.first_time, 'count': self.count}
         else:
-            self.ip_time.get(ip).append(value)
-            if time.time() - self.ip_time[ip][::-1][0] < 0.000001:
-                raise PermissionDenied
-
-        print(self.ip_time)
+            self.ip_log[ip]['count'] = self.count
+            if self.count > 5:
+                last_time = time.time()
+                if last_time - self.first_time < 180:
+                    return error_req_count(request)
+                else:
+                    self.count = 0
+                    self.first_time = last_time
 
         response = self.get_response(request)
 
