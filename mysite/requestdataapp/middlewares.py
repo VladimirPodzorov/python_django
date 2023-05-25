@@ -54,7 +54,7 @@ class ThrottlingMiddleware:
             self.ip_log[ip] = {'first_time': self.first_time, 'count': self.count}
         else:
             self.ip_log[ip]['count'] = self.count
-            if self.count > 5:
+            if self.count > 100:
                 last_time = time.time()
                 if last_time - self.first_time < 180:
                     return error_req_count(request)
