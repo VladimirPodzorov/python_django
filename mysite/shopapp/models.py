@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from myauth.models import Profile
+
 
 class Product(models.Model):
     class Meta:
@@ -14,6 +16,7 @@ class Product(models.Model):
     discount = models.SmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     archived = models.BooleanField(default=False)
+    created_by = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True)
 
     # @property
     # def description_short(self) -> str:

@@ -14,6 +14,7 @@
             >Name: {{ product.name }}</a></p>
             <p>Price: {{ product.price }}</p>
             <p>Discount: {% firstof product.discount 'No discount' %}</p>
+            <p>Created by: {{ product.created_by.username }}</p>
         </div>
         {% endfor %}
     </div>
@@ -21,8 +22,10 @@
     <h3>Продуктов пока нет</h3>
     {% endif %}
 <div>
-    <a href="{% url 'shopapp:product_create' %}">
-        Create a new product
-    </a>
+    {% if perms.shopapp.add_product %}
+        <a href="{% url 'shopapp:product_create' %}">
+            Create a new product
+        </a>
+    {% endif %}
 </div>
 {% endblock %}
