@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from myauth.models import Profile
 from .models import Product, Order
 from .forms import ProductForm, OrderForm, GroupForm
 
@@ -74,11 +75,16 @@ class ProductCreateView(PermissionRequiredMixin, CreateView):
     fields = 'name', 'price', 'description', 'discount'
     success_url = reverse_lazy('shopapp:products_list')
 
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
 
 class ProductUpdateView(UserPassesTestMixin, UpdateView):
     def test_func(self):
         return self.request.user.is_superuser or \
-            self.request.user.has_perm('shopapp.change_product')
+            self.request.user.has_perm('shopapp.change_product') and \
+            self.request.user == self.get_object().created_by
 
     model = Product
     fields = 'name', 'price', 'description', 'discount'
