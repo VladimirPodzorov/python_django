@@ -1,1 +1,41 @@
-[{"model": "shopapp.product", "pk": 1, "fields": {"name": "Laptop", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "price": "1999.00", "discount": 10, "created_at": "2023-05-18T16:59:07.428Z", "archived": false, "created_by": null}}, {"model": "shopapp.product", "pk": 2, "fields": {"name": "Desktop", "description": "for work", "price": "2999.00", "discount": 10, "created_at": "2023-05-18T16:59:07.428Z", "archived": false, "created_by": null}}, {"model": "shopapp.product", "pk": 3, "fields": {"name": "Smartphone", "description": "", "price": "999.00", "discount": 25, "created_at": "2023-05-18T16:59:07.428Z", "archived": false, "created_by": null}}, {"model": "shopapp.product", "pk": 4, "fields": {"name": "Tablet", "description": "great tablet", "price": "1234.00", "discount": 0, "created_at": "2023-05-24T15:04:18.678Z", "archived": true, "created_by": null}}, {"model": "shopapp.product", "pk": 5, "fields": {"name": "Phone2", "description": "Phone2 better phone1\r\nIts great", "price": "889.00", "discount": 0, "created_at": "2023-05-24T15:25:16.460Z", "archived": true, "created_by": null}}, {"model": "shopapp.product", "pk": 6, "fields": {"name": "Phone 3", "description": "phone 3", "price": "999.50", "discount": 12, "created_at": "2023-05-25T14:11:16.478Z", "archived": true, "created_by": null}}, {"model": "shopapp.product", "pk": 7, "fields": {"name": "Tablet 2", "description": "new tablet", "price": "1500.00", "discount": 15, "created_at": "2023-05-25T14:13:34.222Z", "archived": true, "created_by": null}}]
+[
+  {
+    "model": "shopapp.product",
+    "pk": 3,
+    "fields": {
+      "name": "MSIa21",
+      "description": "Laptop",
+      "price": "500.00",
+      "discount": 5,
+      "created_at": "2023-02-26T06:08:53.109Z",
+      "archived": false,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 4,
+    "fields": {
+      "name": "Asus21",
+      "description": "Smatphone",
+      "price": "320.00",
+      "discount": 1,
+      "created_at": "2023-02-26T06:09:09.330Z",
+      "archived": false,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 5,
+    "fields": {
+      "name": "SumsungA34",
+      "description": "Smartphone",
+      "price": "200.00",
+      "discount": 4,
+      "created_at": "2023-02-26T06:16:13.729Z",
+      "archived": false,
+      "created_by": 2
+    }
+  }
+]

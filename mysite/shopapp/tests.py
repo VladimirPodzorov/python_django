@@ -169,15 +169,23 @@ class OrderDetailViewTestCase(TestCase):
 
 class OrdersExportTestCase(TestCase):
     fixtures = [
+        'users-fixture.json',
+        'products-fixture.json',
         'orders-fixture.json',
     ]
 
     @classmethod
     def setUpClass(cls):
-        cls.user = User.objects.create_user(username='Man_Test', password='qwerty', is_staff=True)
+        super().setUpClass()
+        cls.user = User.objects.create_user(
+            username='Man_Test',
+            password='qwerty',
+            is_staff=True
+        )
 
     @classmethod
     def tearDownClass(cls):
+        super().tearDownClass()
         cls.user.delete()
 
     def setUp(self) -> None:
@@ -194,8 +202,8 @@ class OrdersExportTestCase(TestCase):
                 'pk': order.pk,
                 'delivery_address': order.delivery_address,
                 'promocode': order.promocode,
-                'user': order.user,
-                'products': order.products
+                'user': order.user.id,
+                'products': [p.pk for p in order.products.all()],
             }
             for order in orders
         ]
