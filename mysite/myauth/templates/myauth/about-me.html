@@ -13,8 +13,19 @@
         <p>Last name: {{ user.last_name }}</p>
         <p>Email: {{ user.email }}</p>
         <p>Bio: {{ user.profile.bio }}</p>
+        <p>{% if user.profile.avatar %}
+                <img src="{{ user.profile.avatar.url }}" alt="{{ user.profile.avatar.name }}">
+        {% else %}</p>
+            <div>No avatar</div>
+        {% endif %}
+    <div>
+        <a href="{% url 'myauth:update-me' pk=user.profile.pk %}">Update profile</a>
+    </div>
     {% else %}
         <h2>User is unanimous</h2>
     {% endif %}
+    <div>
+        <a href="{% url 'myauth:users-list' %}">Back to users list</a>
+    </div>
 
 {% endblock %}

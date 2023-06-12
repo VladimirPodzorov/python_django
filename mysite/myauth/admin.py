@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from myauth.models import Profile
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = 'user', 'bio', 'agreement_accepted', 'avatar'

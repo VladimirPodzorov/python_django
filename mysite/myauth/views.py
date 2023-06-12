@@ -1,23 +1,47 @@
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LogoutView
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView
 from .models import Profile
 
 
-class AboutMeView(TemplateView):
+class UserList(ListView):
+    model = User
+    context_object_name = 'users'
+    template_name = 'myauth/users-list.html'
+
+
+class AboutMeView(DetailView):
     template_name = 'myauth/about-me.html'
+    model = User
+
+
+class UpdateAboutMeView(UserPassesTestMixin, UpdateView):
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user == self.get_object().user
+
+    model = Profile
+    fields = 'bio', 'avatar',
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse(
+            'myauth:users-list',
+            # kwargs={'pk': self.object.pk}
+        )
 
 
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'myauth/register.html'
-    success_url = reverse_lazy('myauth:about-me')
+    success_url = reverse_lazy('myauth:users-list')
 
     def form_valid(self, form):
         response = super().form_valid(form)
