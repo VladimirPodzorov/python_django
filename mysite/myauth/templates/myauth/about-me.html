@@ -19,7 +19,9 @@
             <div>No avatar</div>
         {% endif %}
     <div>
+        {% if request.user.id == user.id or request.user.is_staff %}
         <a href="{% url 'myauth:update-me' pk=user.profile.pk %}">Update profile</a>
+        {% endif %}
     </div>
     {% else %}
         <h2>User is unanimous</h2>
