@@ -18,6 +18,11 @@
             {% endfor %}
         </ul>
     </div>
+    <div>
+        <strong>
+            You have {{ items }} item{{ items|pluralize:"es" }}
+        </strong>
+    </div>
 
     <div>
         time running: {{ time_running }}
