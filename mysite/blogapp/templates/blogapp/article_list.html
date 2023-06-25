@@ -1,0 +1,25 @@
+{% extends 'blogapp/base.html' %}
+
+{% block title %}
+    Articles
+{% endblock %}
+
+{% block body %}
+    <h1>Articles list</h1>
+    {% if object_list %}
+    <div>
+        {% for art in object_list %}
+        <p>Title: {{ art.title }}</p>
+        <p>Date: {{ art.pub_date }}</p>
+        <p>Author: {{ art.author.name }}</p>
+        <p>Category: {{ art.category.name }}</p>
+        <div>Tags:
+            {% for tag in art.tags.all %}
+                <p>{{ tag.name }}</p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+{% endblock %}
