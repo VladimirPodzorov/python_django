@@ -1,0 +1,75 @@
+2023-06-25 16:34:36,692 [DEBUG] shopapp.views: Products for shop index: [('Laptop', 1999), ('Desktop', 2999), ('Smartphone', 999)]
+2023-06-25 16:34:36,693 [INFO] shopapp.views: Rendering shop index
+2023-06-25 16:36:45,590 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/mysite/settings.py changed, reloading.
+2023-06-25 16:36:45,949 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-26 16:17:23,848 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-26 16:17:31,516 [WARNING] django.request: Not Found: /
+2023-06-26 16:17:31,586 [WARNING] django.request: Not Found: /favicon.ico
+2023-06-26 16:18:08,758 [WARNING] django.request: Not Found: /orders
+2023-06-26 16:19:13,058 [WARNING] django.request: Not Found: /myauth/logout
+2023-06-26 16:19:45,680 [WARNING] django.request: Not Found: /accaunts/logout
+2023-06-26 16:19:51,551 [WARNING] django.request: Not Found: /accaunts
+2023-06-26 16:23:28,060 [WARNING] django.request: Not Found: /favicon.ico
+2023-06-26 16:34:14,414 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:18:36,324 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:18:56,318 [WARNING] django.request: Not Found: /
+2023-06-29 17:18:56,500 [WARNING] django.request: Not Found: /favicon.ico
+2023-06-29 17:20:30,262 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:20:30,668 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:20:44,263 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:20:44,651 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:20:47,987 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:20:48,322 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:20:54,624 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:20:55,003 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:21:00,361 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:21:00,711 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:21:24,426 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:21:24,850 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:22:05,977 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:22:06,342 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:22:10,888 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py", line 236, in get
+    name = elem["nam"]
+KeyError: 'nam'
+2023-06-29 17:29:31,654 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:29:32,071 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:35:13,293 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:35:38,187 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
+2023-06-29 17:35:38,382 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
+2023-06-29 17:35:45,422 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:35:45,482 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
+2023-06-29 17:35:45,895 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:35:48,538 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
+2023-06-29 17:35:48,619 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/podzorof/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py", line 236, in get
+    name = elem["nam"]
+KeyError: 'nam'
+2023-06-29 17:35:48,747 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
+2023-06-29 17:35:48,804 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
+2023-06-29 17:36:48,814 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
+2023-06-29 17:37:47,703 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-06-29 17:37:48,112 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-06-29 17:37:54,276 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
+2023-06-29 17:37:54,455 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
+2023-06-29 17:38:54,394 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
