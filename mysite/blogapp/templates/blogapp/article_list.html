@@ -8,18 +8,18 @@
     <h1>Articles list</h1>
     {% if object_list %}
     <div>
-        {% for art in object_list %}
-        <p>Title: {{ art.title }}</p>
-        <p>Date: {{ art.pub_date }}</p>
-        <p>Author: {{ art.author.name }}</p>
-        <p>Category: {{ art.category.name }}</p>
-        <div>Tags:
-            {% for tag in art.tags.all %}
-                <p>{{ tag.name }}</p>
-            {% endfor %}
+        {% for article in object_list %}
+        <div>
+            <p>
+                <a href="{% url 'blogapp:article' pk=article.pk %}">{{ article.title }}</a>
+            </p>
+            <p>Published: {{ article.published_at }}</p>
         </div>
+
         {% endfor %}
     </div>
+    {% else %}
+    <h3>No published articles yet</h3>
     {% endif %}
 
 {% endblock %}
