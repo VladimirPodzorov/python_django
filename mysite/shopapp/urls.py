@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.views.decorators.cache import cache_page
 
 from rest_framework.routers import DefaultRouter
 
@@ -19,6 +20,8 @@ from .views import (
     OrdersDataExportView,
     ProductViewSet,
     OrderViewSet,
+    UserOrdersListView,
+    UserOrdersDataExportView,
 )
 
 app_name = 'shopapp'
@@ -43,4 +46,6 @@ urlpatterns = [
     path('orders/<int:pk>/confirm-delete/', OrderDeleteView.as_view(), name='order_delete'),
     path('products/export/', ProductsDataExportView.as_view(), name='products-export'),
     path('orders/export/', OrdersDataExportView.as_view(), name='orders-export'),
+    path('users/<int:user_id>/orders/', UserOrdersListView.as_view(), name='user_order_list'),
+    path("users/<int:user_id>/orders/export/", UserOrdersDataExportView.as_view(), name='user_orders_export'),
 ]

@@ -9,12 +9,15 @@ from timeit import default_timer
 from csv import DictWriter
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import Group
-from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, redirect, reverse, get_list_or_404
+from django.contrib.auth.models import Group, User
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse, Http404
+from django.shortcuts import render, redirect, reverse, get_list_or_404, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.core.cache import cache
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.decorators import action
@@ -60,6 +63,10 @@ class ProductViewSet(ModelViewSet):
         'discount',
     ]
 
+    @method_decorator(cache_page(60 * 2))
+    def list(self, *args, **kwargs):
+        return super().list(*args, **kwargs)
+
     @extend_schema(
         summary="Get one product by ID",
         description="Retrieves **product**, returns 404 if not found",
@@ -103,7 +110,8 @@ class ProductViewSet(ModelViewSet):
             request.FILES["file"].file,
             encoding=request.encoding,
         )
-        serializer = self.get_serializer(products, many=True)
+        serializer = se
+                    user=User.objects.get(id=self.kwargs['user_id'])lf.get_serializer(products, many=True)
         return Response(serializer.data)
 
 
@@ -143,6 +151,7 @@ class ShopIndexView(View):
         }
         log.debug("Products for shop index: %s", products)
         log.info("Rendering shop index")
+        print('shop index context', context)
         return render(request, 'shopapp/shop-index.html', context=context)
 
 
@@ -263,19 +272,20 @@ class OrderDeleteView(DeleteView):
 
 class ProductsDataExportView(View):
     def get(self, request: HttpRequest) -> JsonResponse:
-        products = Product.objects.order_by('pk').all()
-        products_data = [
-            {
-                'pk': product.pk,
-                'name': product.name,
-                'price': product.price,
-                'archived': product.archived,
-            }
-            for product in products
-        ]
-        elem = products_data[0]
-        name = elem["name"]
-        print("name:", name)
+        cache_key = "products_data_export"
+        products_data = cache.get(cache_key)
+        if products_data is None:
+            products = Product.objects.order_by('pk').all()
+            products_data = [
+                {
+                    'pk': product.pk,
+                    'name': product.name,
+                    'price': product.price,
+                    'archived': product.archived,
+                }
+                for product in products
+            ]
+            cache.set(cache_key, products_data, 300)
         return JsonResponse({'products': products_data})
 
 
@@ -296,6 +306,42 @@ class OrdersDataExportView(UserPassesTestMixin, View):
             for order in orders
         ]
         return JsonResponse({'orders': orders_data})
+
+
+class UserOrdersListView(LoginRequiredMixin, ListView):
+    queryset = (
+        Order.objects.select_related("user").prefetch_related("products")
+    )
+    template_name_suffix = '_user_list'
+
+    def get_queryset(self):
+        try:
+            self.owner = User.objects.get(id=self.kwargs['user_id'])
+            return Order.objects.filter(user=self.owner)
+        except User.DoesNotExist:
+            raise Http404("User not exsist")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['owner'] = self.owner
+        return context
+
+
+class UserOrdersDataExportView(View):
+    def get(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
+        cache_key = "orders_data_export"
+        user_orders_data = cache.get(cache_key)
+        if user_orders_data is None:
+            try:
+                orders = Order.objects.order_by("-pk").filter(
+                    user=User.objects.get(id=self.kwargs['user_id'])
+                )
+                user_orders_data = OrderSerializer(orders, many=True)
+                cache.set(cache_key, user_orders_data, 300)
+            except User.DoesNotExist:
+                raise Http404("User not exsist")
+
+        return JsonResponse({'orders': user_orders_data.data})
 
 
 
