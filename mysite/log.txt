@@ -5476,3 +5476,6 @@ Original exception text was: 'QuerySet' object has no attribute 'user'.
 2023-07-12 17:08:54,307 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
 2023-07-12 17:09:45,114 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
 2023-07-12 17:10:52,436 [INFO] django.utils.autoreload: /home/podzorof/PycharmProjects/python_django/mysite/shopapp/views.py changed, reloading.
+2023-07-12 17:10:53,205 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-07-12 17:10:53,396 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
+2023-07-12 17:10:53,619 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0

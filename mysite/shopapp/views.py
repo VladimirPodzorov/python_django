@@ -110,8 +110,8 @@ class ProductViewSet(ModelViewSet):
             request.FILES["file"].file,
             encoding=request.encoding,
         )
-        serializer = se
-                    user=User.objects.get(id=self.kwargs['user_id'])lf.get_serializer(products, many=True)
+        serializer = self.get_serializer(products, many=True)
+
         return Response(serializer.data)
 
 
