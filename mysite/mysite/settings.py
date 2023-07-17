@@ -16,20 +16,20 @@ import logging.config
 
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as __
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
+# import sentry_sdk
+# from sentry_sdk.integrations.django import DjangoIntegration
 
-sentry_sdk.init(
-    dsn="https://e68ecccb9f4c49809bdb3c9a4ade21f6@o4505443992469504.ingest.sentry.io/4505444003479552",
-    integrations=[
-        DjangoIntegration(),
-    ],
-    traces_sample_rate=1.0,
-
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True
-)
+# sentry_sdk.init(
+#     dsn="https://e68ecccb9f4c49809bdb3c9a4ade21f6@o4505443992469504.ingest.sentry.io/4505444003479552",
+#     integrations=[
+#         DjangoIntegration(),
+#     ],
+#     traces_sample_rate=1.0,
+#
+#     # If you wish to associate users to errors (assuming you are using
+#     # django.contrib.auth) you may enable sending PII data.
+#     send_default_pii=True
+# )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

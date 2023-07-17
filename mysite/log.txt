@@ -5479,3 +5479,12 @@ Original exception text was: 'QuerySet' object has no attribute 'user'.
 2023-07-12 17:10:53,205 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
 2023-07-12 17:10:53,396 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
 2023-07-12 17:10:53,619 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 0
+2023-07-16 14:19:46,254 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-07-16 14:19:46,622 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
+2023-07-16 14:19:46,822 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 41
+2023-07-16 14:21:01,532 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-07-16 14:21:01,803 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
+2023-07-16 14:21:01,978 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 41
+2023-07-16 14:21:40,410 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-07-16 14:21:40,675 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4505443992469504.ingest.sentry.io:443
+2023-07-16 14:21:40,846 [DEBUG] urllib3.connectionpool: https://o4505443992469504.ingest.sentry.io:443 "POST /api/4505444003479552/envelope/ HTTP/1.1" 200 41
